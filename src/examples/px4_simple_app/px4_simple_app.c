@@ -64,19 +64,21 @@ int px4_simple_app_main(int argc, char *argv[])
 	memset(&servos, 0, sizeof(servos));
 	orb_advert_t servos_pub = orb_advertise(ORB_ID(actuator_servos), &servos);
 
-	int sign = 1;
+	int loops = 0;
 
-	for (int count = 0; count < 5; count++) {
+	while (1) {
+
+		loops++;
+		for (int i=0; i<8; i++) {
+			servos.control[i] = -1;
+		}
+		servos.control[loops%4] = 1;
 
 		PX4_INFO("Sleep for 1 sec!");
 		sleep(1);
 
 		servos.timestamp = hrt_absolute_time();
 		servos.timestamp_sample = servos.timestamp;
-		sign *= -1;
-		for (int i=0; i<8; i++) {
-			servos.control[i] = sign;
-		}
 
 		orb_publish(ORB_ID(actuator_servos), servos_pub, &servos);
 
