@@ -58,6 +58,7 @@ int px4_simple_app_main(int argc, char *argv[])
 	PX4_INFO("Christmas Tree App! For this to work, you gotta stop Control Allocator task!");
 	PX4_INFO("In Nuttx bash use: control_allocator stop");
 	PX4_INFO("You also need to ARM the tree to see the blinking LEDs!!");
+	PX4_INFO("You should also always have QGC connected, in manual mode, with joystick throttle down!!");
 
 	/* advertise actuator_servos topic */
 	struct actuator_servos_s servos;
