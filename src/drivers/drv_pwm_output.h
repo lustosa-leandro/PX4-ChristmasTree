@@ -64,7 +64,7 @@ __BEGIN_DECLS
 /**
  * Highest maximum PWM in us
  */
-#define PWM_HIGHEST_MAX 2500
+#define PWM_HIGHEST_MAX 5000
 
 #endif // not PX4_PWM_ALTERNATE_RANGES
 
